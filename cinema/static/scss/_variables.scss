@@ -1,0 +1,26 @@
+// Color Palette
+$primary-color: #1e90ff; // Dodger Blue
+$secondary-color: #ff69b4; // Hot Pink
+$background-color: #f5f5f5; // Light Gray Background
+$text-color: #333; // Dark Gray Text
+$error-color: #ff4d4d; // Light Red
+$link-color: #1e90ff; // Dodger Blue
+$success-color: #4caf50; // Green
+$warning-color: #ff9800; // Orange
+
+// Typography
+$font-family: 'Arial, sans-serif';
+$font-size-base: 16px;
+$font-size-large: 18px;
+$font-size-small: 14px;
+
+// Spacing
+$spacing-unit: 8px;
+$spacing-small: $spacing-unit * 2;
+$spacing-medium: $spacing-unit * 4;
+$spacing-large: $spacing-unit * 8;
+
+// Breakpoints
+$breakpoint-mobile: 600px;
+$breakpoint-tablet: 900px;
+$breakpoint-desktop: 1200px;
