@@ -1,0 +1,18 @@
+{
+    "name": "cinema-management-spa",
+    "version": "1.0.0",
+    "description": "Cinema Management SPA for Lab 2",
+    "main": "src/app.js",
+    "scripts": {
+        "start": "http-server src/ -p 3000",
+        "lint": "eslint src/*.js --ignore-pattern node_modules/"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-plugin-import": "^2.31.0",
+        "http-server": "^14.1.1"
+    }
+}
