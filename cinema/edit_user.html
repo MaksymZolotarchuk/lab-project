@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+    <link rel="stylesheet" href="static/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Edit User</h1>
+            <nav>
+                <a href="users.html" class="link">Back to Users</a>
+                <a href="logout.html" class="link">Logout</a>
+            </nav>
+        </header>
+        <main>
+            <section class="card">
+                <h2>Edit User Information</h2>
+                <form id="editUserForm">
+                    <div class="form-group">
+                        <label for="editUsername">Username</label>
+                        <input type="text" id="editUsername" name="editUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRole">Role</label>
+                        <select id="editRole" name="editRole" required>
+                            <option value="admin">Admin</option>
+                            <option value="regular">User</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="button">Save</button>
+                    <button type="reset" class="button">Cancel</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+
+        if (username) {
+            document.getElementById('editUsername').value = username;
+            document.getElementById('editRole').value = username === 'admin_user' ? 'admin' : 'regular';
+        }
+
+        document.getElementById('editUserForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert(`User ${username} updated successfully.`);
+            window.location.href = 'users.html';
+        });
+    </script>
+</body>
+</html>
