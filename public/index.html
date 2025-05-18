@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель адміністратора кінотеатру - WebSocket</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Система управління кінотеатром</h1>
+            <div class="user-info">
+                <span id="username">Admin_0</span>
+                <button id="changeNameBtn">Змінити ім'я</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="notifications-panel">
+                <h2>Сповіщення</h2>
+                <div id="notifications" class="notifications-container"></div>
+            </div>
+
+            <div class="chat-panel">
+                <h2>Чат адміністраторів</h2>
+                <div id="chatMessages" class="chat-container"></div>
+                <div class="chat-input-container">
+                    <input type="text" id="chatInput" placeholder="Введіть повідомлення...">
+                    <button id="sendMessageBtn">Надіслати</button>
+                </div>
+            </div>
+
+            <div class="actions-panel">
+                <h2>Дії</h2>
+                <div class="action-buttons">
+                    <button id="newMovieBtn">Додати новий фільм</button>
+                    <button id="updateScheduleBtn">Оновити розклад</button>
+                    <button id="deleteMovieBtn">Видалити фільм</button>
+                </div>
+
+                <div id="actionFormContainer" class="action-form-container">
+                    <!-- Тут будуть відображатися форми для дій -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <template id="newMovieFormTemplate">
+        <form id="newMovieForm" class="action-form">
+            <h3>Додати новий фільм</h3>
+            <div class="form-group">
+                <label for="movieTitle">Назва фільму</label>
+                <input type="text" id="movieTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="movieDuration">Тривалість (хв)</label>
+                <input type="number" id="movieDuration" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="movieGenre">Жанр</label>
+                <input type="text" id="movieGenre" required>
+            </div>
+            <div class="form-group">
+                <label for="movieDescription">Опис</label>
+                <textarea id="movieDescription" rows="3"></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Зберегти</button>
+                <button type="button" class="cancel-btn">Скасувати</button>
+            </div>
+        </form>
+    </template>
+
+    <template id="updateScheduleFormTemplate">
+        <form id="updateScheduleForm" class="action-form">
+            <h3>Оновити розклад</h3>
+            <div class="form-group">
+                <label for="scheduleMovie">Фільм</label>
+                <select id="scheduleMovie" required>
+                    <option value="">-- Виберіть фільм --</option>
+                    <option value="1">Месники: Завершення</option>
+                    <option value="2">Початок</option>
+                    <option value="3">Зоряні війни: Нова надія</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="scheduleDate">Дата</label>
+                <input type="date" id="scheduleDate" required>
+            </div>
+            <div class="form-group">
+                <label for="scheduleTime">Час</label>
+                <input type="time" id="scheduleTime" required>
+            </div>
+            <div class="form-group">
+                <label for="scheduleHall">Зал</label>
+                <select id="scheduleHall" required>
+                    <option value="">-- Виберіть зал --</option>
+                    <option value="1">Зал 1</option>
+                    <option value="2">Зал 2</option>
+                    <option value="3">Зал 3</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Зберегти</button>
+                <button type="button" class="cancel-btn">Скасувати</button>
+            </div>
+        </form>
+    </template>
+
+    <template id="deleteMovieFormTemplate">
+        <form id="deleteMovieForm" class="action-form">
+            <h3>Видалити фільм</h3>
+            <div class="form-group">
+                <label for="deleteMovieSelect">Виберіть фільм</label>
+                <select id="deleteMovieSelect" required>
+                    <option value="">-- Виберіть фільм --</option>
+                    <option value="1">Месники: Завершення</option>
+                    <option value="2">Початок</option>
+                    <option value="3">Зоряні війни: Нова надія</option>
+                </select>
+            </div>
+            <div class="form-group confirmation">
+                <label>
+                    <input type="checkbox" id="deleteConfirmation" required>
+                    Я підтверджую, що хочу видалити цей фільм
+                </label>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Видалити</button>
+                <button type="button" class="cancel-btn">Скасувати</button>
+            </div>
+        </form>
+    </template>
+
+    <div id="changeNameModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Змінити ім'я</h3>
+            <form id="changeNameForm">
+                <div class="form-group">
+                    <label for="newUsername">Нове ім'я</label>
+                    <input type="text" id="newUsername" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Зберегти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
